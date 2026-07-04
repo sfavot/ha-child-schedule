@@ -1,0 +1,12 @@
+{
+  "domain": "child_schedule",
+  "name": "Child Schedule",
+  "codeowners": [],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/sfavot/ha-child-schedule",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/sfavot/ha-child-schedule/issues",
+  "requirements": ["holidays"],
+  "version": "0.1.0"
+}

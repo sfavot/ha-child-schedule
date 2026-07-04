@@ -1,0 +1,334 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Ajouter un enfant",
+        "description": "Configurer le suivi du planning d'un enfant. Vous pourrez ensuite éditer le planning complet depuis les options de l'intégration.",
+        "data": {
+          "child_name": "Nom de l'enfant",
+          "default_location": "Lieu par défaut",
+          "use_demo_schedule": "Charger le planning de démonstration (configuration d'exemple)"
+        }
+      }
+    },
+    "error": {
+      "invalid_child_name": "Le nom de l'enfant ne peut pas être vide."
+    },
+    "abort": {
+      "already_configured": "Un enfant avec ce nom est déjà configuré."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Éditeur de planning",
+        "menu_options": {
+          "general": "Général",
+          "locations": "Lieux",
+          "weekly": "Planning hebdomadaire",
+          "school": "École / crèche",
+          "vacations": "Vacances scolaires et alternance",
+          "date_ranges": "Périodes ponctuelles (colo, séjours, autres)",
+          "exceptions": "Exceptions ponctuelles",
+          "save": "Enregistrer et appliquer"
+        }
+      },
+      "general": {
+        "title": "Général",
+        "description": "Nom de l'enfant et lieu par défaut quand aucune règle ne s'applique.",
+        "data": {
+          "child_name": "Nom de l'enfant",
+          "default_location": "Lieu par défaut"
+        }
+      },
+      "locations": {
+        "title": "Lieux",
+        "description": "La liste des lieux utilisés dans le planning (ex. : maison, école, papa, grands-parents, colo).",
+        "data": {
+          "locations": "Lieux (séparés par des virgules)"
+        }
+      },
+      "weekly": {
+        "title": "Planning hebdomadaire",
+        "description": "Créneaux hebdomadaires récurrents. En dehors de ces créneaux, l'enfant est au lieu par défaut.\n\nCréneaux actuels :\n{slots}",
+        "menu_options": {
+          "weekly_add": "Ajouter un créneau",
+          "weekly_remove": "Supprimer des créneaux",
+          "init": "Retour au menu"
+        }
+      },
+      "weekly_add": {
+        "title": "Ajouter un créneau hebdomadaire",
+        "description": "Prolongation par jours fériés : quand elle est activée, les fériés juste avant (ou après) le créneau le prolongent, ex. un lundi férié après un créneau de weekend prolonge le weekend jusqu'au lundi. Les heures de passage des jours prolongés sont configurables ; laissez-les vides pour garder les heures habituelles du créneau.",
+        "data": {
+          "location": "Lieu",
+          "start_day": "Jour de début",
+          "start_time": "Heure de début",
+          "end_day": "Jour de fin",
+          "end_time": "Heure de fin",
+          "week_parity": "Filtre de semaine",
+          "extend_start_on_holidays": "Prolonger le début à travers les jours fériés adjacents",
+          "extend_end_on_holidays": "Prolonger la fin à travers les jours fériés adjacents",
+          "extended_start_time": "Heure de passage les jours de début prolongés (optionnel)",
+          "extended_end_time": "Heure de passage les jours de fin prolongés (optionnel)"
+        }
+      },
+      "weekly_remove": {
+        "title": "Supprimer des créneaux hebdomadaires",
+        "data": {
+          "slots": "Créneaux à supprimer"
+        }
+      },
+      "school": {
+        "title": "École / crèche",
+        "description": "Un lieu régulier qui change où se trouve l'enfant, sans changer qui en est responsable. Désactivé pendant les vacances scolaires et les jours fériés.",
+        "data": {
+          "enabled": "Activé",
+          "location": "Lieu",
+          "days": "Jours",
+          "start_time": "Heure de début",
+          "end_time": "Heure de fin",
+          "first_school_day": "Jour de la rentrée (optionnel)",
+          "closed_days": "Jours de fermeture supplémentaires, ex. ponts (dates séparées par des virgules)"
+        }
+      },
+      "vacations": {
+        "title": "Vacances scolaires et alternance",
+        "description": "L'alternance une semaine/une semaine commence le premier lundi de chaque période de vacances ; avant cela, le planning hebdomadaire s'applique. Le lieu de départ dépend de la parité de l'année civile de début des vacances.",
+        "data": {
+          "enabled": "Alterner une semaine/une semaine pendant les vacances scolaires",
+          "even_year_first_location": "Lieu de la première semaine (années paires)",
+          "odd_year_first_location": "Lieu de la première semaine (années impaires)",
+          "source": "Source des dates de vacances scolaires",
+          "zone": "Zone de vacances scolaires française"
+        }
+      },
+      "holiday_periods": {
+        "title": "Périodes de vacances scolaires",
+        "description": "Périodes de vacances scolaires gérées manuellement. La date de fin est le jour de la reprise de l'école.\n\nPériodes actuelles :\n{periods}",
+        "menu_options": {
+          "holiday_add": "Ajouter une période",
+          "holiday_remove": "Supprimer des périodes",
+          "init": "Retour au menu"
+        }
+      },
+      "holiday_add": {
+        "title": "Ajouter une période de vacances scolaires",
+        "data": {
+          "start": "Premier jour des vacances",
+          "end": "Jour de la reprise de l'école",
+          "name": "Nom (optionnel)",
+          "alternate": "Appliquer l'alternance une semaine/une semaine à cette période"
+        }
+      },
+      "holiday_remove": {
+        "title": "Supprimer des périodes de vacances scolaires",
+        "data": {
+          "periods": "Périodes à supprimer"
+        }
+      },
+      "date_ranges": {
+        "title": "Périodes ponctuelles",
+        "description": "Plages de dates absolues qui remplacent le planning habituel (colo, séjours, arrangements spécifiques). En cas de chevauchement, les premières entrées gagnent.\n\nPériodes actuelles :\n{ranges}",
+        "menu_options": {
+          "date_range_add": "Ajouter une période",
+          "date_range_remove": "Supprimer des périodes",
+          "init": "Retour au menu"
+        }
+      },
+      "date_range_add": {
+        "title": "Ajouter une période ponctuelle",
+        "data": {
+          "location": "Lieu",
+          "start": "Début",
+          "end": "Fin",
+          "reason": "Raison (optionnel)"
+        }
+      },
+      "date_range_remove": {
+        "title": "Supprimer des périodes ponctuelles",
+        "data": {
+          "ranges": "Périodes à supprimer"
+        }
+      },
+      "exceptions": {
+        "title": "Exceptions ponctuelles",
+        "description": "Les exceptions sont enregistrées immédiatement et remplacent le planning prévu sur une plage de dates (ex. séjour ou note de calendrier).\n\nExceptions actuelles :\n{exceptions}",
+        "menu_options": {
+          "exception_add": "Ajouter une exception",
+          "exception_remove": "Supprimer des exceptions",
+          "init": "Retour au menu"
+        }
+      },
+      "exception_add": {
+        "title": "Ajouter une exception",
+        "data": {
+          "location": "Lieu",
+          "start": "Début",
+          "end": "Fin",
+          "reason": "Raison (optionnel)"
+        }
+      },
+      "exception_remove": {
+        "title": "Supprimer des exceptions",
+        "data": {
+          "exceptions": "Exceptions à supprimer"
+        }
+      },
+      "save": {
+        "title": "Planning invalide",
+        "description": "Le planning ne peut pas être enregistré : {error}"
+      }
+    },
+    "error": {
+      "no_locations": "Saisissez au moins un lieu.",
+      "slot_order": "Le créneau doit commencer avant de finir.",
+      "period_order": "La période doit commencer avant de finir.",
+      "invalid_date": "Format de date invalide, utilisez AAAA-MM-JJ.",
+      "invalid_config": "La configuration du planning est invalide."
+    }
+  },
+  "selector": {
+    "weekday": {
+      "options": {
+        "0": "Lundi",
+        "1": "Mardi",
+        "2": "Mercredi",
+        "3": "Jeudi",
+        "4": "Vendredi",
+        "5": "Samedi",
+        "6": "Dimanche"
+      }
+    },
+    "week_parity": {
+      "options": {
+        "every": "Toutes les semaines",
+        "odd": "Semaines ISO impaires",
+        "even": "Semaines ISO paires"
+      }
+    },
+    "holiday_source": {
+      "options": {
+        "manual": "Dates manuelles",
+        "fr_api": "Calendrier officiel français (par zone)"
+      }
+    },
+    "holiday_zone": {
+      "options": {
+        "A": "Zone A",
+        "B": "Zone B",
+        "C": "Zone C",
+        "corse": "Corse"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "location": {
+        "name": "Lieu"
+      },
+      "assigned_location": {
+        "name": "Lieu assigné"
+      },
+      "next_change": {
+        "name": "Prochain changement"
+      }
+    },
+    "binary_sensor": {
+      "at_home": {
+        "name": "À la maison"
+      },
+      "at_school": {
+        "name": "À l'école"
+      }
+    },
+    "calendar": {
+      "schedule": {
+        "name": "Planning"
+      }
+    }
+  },
+  "services": {
+    "set_override": {
+      "name": "Définir un forçage manuel",
+      "description": "Force manuellement le lieu de l'enfant, prioritaire sur tout planning prévu.",
+      "fields": {
+        "child_id": {
+          "name": "ID de l'enfant",
+          "description": "Identifiant de l'enfant (slug du nom de l'enfant)."
+        },
+        "location": {
+          "name": "Lieu",
+          "description": "Le lieu à forcer."
+        },
+        "start": {
+          "name": "Début",
+          "description": "Début du forçage. Par défaut : maintenant."
+        },
+        "end": {
+          "name": "Fin",
+          "description": "Fin du forçage. Laisser vide pour un forçage sans fin."
+        },
+        "reason": {
+          "name": "Raison",
+          "description": "Raison optionnelle affichée dans les attributs des entités."
+        }
+      }
+    },
+    "clear_override": {
+      "name": "Supprimer le forçage manuel",
+      "description": "Supprime le forçage manuel et revient au planning prévu.",
+      "fields": {
+        "child_id": {
+          "name": "ID de l'enfant",
+          "description": "Identifiant de l'enfant (slug du nom de l'enfant)."
+        }
+      }
+    },
+    "add_exception": {
+      "name": "Ajouter une exception",
+      "description": "Ajoute une exception ponctuelle qui remplace le planning prévu sur une plage de dates. Persistée après redémarrage.",
+      "fields": {
+        "child_id": {
+          "name": "ID de l'enfant",
+          "description": "Identifiant de l'enfant (slug du nom de l'enfant)."
+        },
+        "location": {
+          "name": "Lieu",
+          "description": "Le lieu à appliquer pendant l'exception."
+        },
+        "start": {
+          "name": "Début",
+          "description": "Début de l'exception."
+        },
+        "end": {
+          "name": "Fin",
+          "description": "Fin de l'exception."
+        },
+        "reason": {
+          "name": "Raison",
+          "description": "Raison optionnelle affichée dans les attributs des entités."
+        }
+      }
+    },
+    "remove_exception": {
+      "name": "Supprimer une exception",
+      "description": "Supprime une exception persistée par son identifiant.",
+      "fields": {
+        "child_id": {
+          "name": "ID de l'enfant",
+          "description": "Identifiant de l'enfant (slug du nom de l'enfant)."
+        },
+        "exception_id": {
+          "name": "ID de l'exception",
+          "description": "Identifiant de l'exception renvoyé lors de son ajout."
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "unknown_child": {
+      "message": "Aucun enfant avec l'ID {child_id} n'est configuré."
+    }
+  }
+}

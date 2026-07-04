@@ -1,0 +1,6 @@
+{
+  "name": "Child Schedule",
+  "render_readme": true,
+  "domains": ["sensor", "binary_sensor", "calendar"],
+  "homeassistant": "2026.7.0"
+}

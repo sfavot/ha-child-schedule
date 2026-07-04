@@ -1,0 +1,334 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Add a child",
+        "description": "Set up schedule tracking for a child. You can then edit the full schedule from the integration options.",
+        "data": {
+          "child_name": "Child name",
+          "default_location": "Default location",
+          "use_demo_schedule": "Load the demo schedule (example configuration)"
+        }
+      }
+    },
+    "error": {
+      "invalid_child_name": "The child name cannot be empty."
+    },
+    "abort": {
+      "already_configured": "A child with this name is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Schedule editor",
+        "menu_options": {
+          "general": "General",
+          "locations": "Locations",
+          "weekly": "Weekly schedule",
+          "school": "School / daycare",
+          "vacations": "School holidays and alternation",
+          "date_ranges": "One-off periods (camps, trips, custom)",
+          "exceptions": "One-off exceptions",
+          "save": "Save and apply"
+        }
+      },
+      "general": {
+        "title": "General",
+        "description": "Child name and default location when no rule matches.",
+        "data": {
+          "child_name": "Child name",
+          "default_location": "Default location"
+        }
+      },
+      "locations": {
+        "title": "Locations",
+        "description": "The list of locations used in the schedule (e.g. home, school, father, grandparents, camp).",
+        "data": {
+          "locations": "Locations (comma separated)"
+        }
+      },
+      "weekly": {
+        "title": "Weekly schedule",
+        "description": "Recurring weekly slots. Outside these slots the child is at the default location.\n\nCurrent slots:\n{slots}",
+        "menu_options": {
+          "weekly_add": "Add a slot",
+          "weekly_remove": "Remove slots",
+          "init": "Back to menu"
+        }
+      },
+      "weekly_add": {
+        "title": "Add a weekly slot",
+        "description": "Public holiday extension: when enabled, holidays right before (or after) the slot extend it, e.g. a Monday holiday after a weekend slot extends the weekend to Monday. Handover times on extended days are configurable; leave them empty to keep the slot's regular times.",
+        "data": {
+          "location": "Location",
+          "start_day": "Start day",
+          "start_time": "Start time",
+          "end_day": "End day",
+          "end_time": "End time",
+          "week_parity": "Week filter",
+          "extend_start_on_holidays": "Extend the start across adjacent public holidays",
+          "extend_end_on_holidays": "Extend the end across adjacent public holidays",
+          "extended_start_time": "Handover time on extended start days (optional)",
+          "extended_end_time": "Handover time on extended end days (optional)"
+        }
+      },
+      "weekly_remove": {
+        "title": "Remove weekly slots",
+        "data": {
+          "slots": "Slots to remove"
+        }
+      },
+      "school": {
+        "title": "School / daycare",
+        "description": "A regular place that changes where the child is, without changing who is responsible for them. Disabled on school holidays and public holidays.",
+        "data": {
+          "enabled": "Enabled",
+          "location": "Location",
+          "days": "Days",
+          "start_time": "Start time",
+          "end_time": "End time",
+          "first_school_day": "First school day (optional)",
+          "closed_days": "Extra closed days, e.g. bridge days (comma separated dates)"
+        }
+      },
+      "vacations": {
+        "title": "School holidays and alternation",
+        "description": "Week/week alternation starts on the first Monday of each holiday period; before that, the weekly schedule applies. The starting location depends on the parity of the calendar year in which the holidays start.",
+        "data": {
+          "enabled": "Alternate week/week during school holidays",
+          "even_year_first_location": "First week location (even years)",
+          "odd_year_first_location": "First week location (odd years)",
+          "source": "School holiday dates source",
+          "zone": "French school holiday zone"
+        }
+      },
+      "holiday_periods": {
+        "title": "School holiday periods",
+        "description": "Manually managed school holiday periods. The end date is the day school resumes.\n\nCurrent periods:\n{periods}",
+        "menu_options": {
+          "holiday_add": "Add a period",
+          "holiday_remove": "Remove periods",
+          "init": "Back to menu"
+        }
+      },
+      "holiday_add": {
+        "title": "Add a school holiday period",
+        "data": {
+          "start": "First day of the holidays",
+          "end": "Day school resumes",
+          "name": "Name (optional)",
+          "alternate": "Apply week/week alternation to this period"
+        }
+      },
+      "holiday_remove": {
+        "title": "Remove school holiday periods",
+        "data": {
+          "periods": "Periods to remove"
+        }
+      },
+      "date_ranges": {
+        "title": "One-off periods",
+        "description": "Absolute date ranges that override the regular schedule (camps, trips, specific arrangements). Earlier entries win when ranges overlap.\n\nCurrent periods:\n{ranges}",
+        "menu_options": {
+          "date_range_add": "Add a period",
+          "date_range_remove": "Remove periods",
+          "init": "Back to menu"
+        }
+      },
+      "date_range_add": {
+        "title": "Add a one-off period",
+        "data": {
+          "location": "Location",
+          "start": "Start",
+          "end": "End",
+          "reason": "Reason (optional)"
+        }
+      },
+      "date_range_remove": {
+        "title": "Remove one-off periods",
+        "data": {
+          "ranges": "Periods to remove"
+        }
+      },
+      "exceptions": {
+        "title": "One-off exceptions",
+        "description": "Exceptions are saved immediately and override the planned schedule for a date range (e.g. a trip or a calendar note).\n\nCurrent exceptions:\n{exceptions}",
+        "menu_options": {
+          "exception_add": "Add an exception",
+          "exception_remove": "Remove exceptions",
+          "init": "Back to menu"
+        }
+      },
+      "exception_add": {
+        "title": "Add an exception",
+        "data": {
+          "location": "Location",
+          "start": "Start",
+          "end": "End",
+          "reason": "Reason (optional)"
+        }
+      },
+      "exception_remove": {
+        "title": "Remove exceptions",
+        "data": {
+          "exceptions": "Exceptions to remove"
+        }
+      },
+      "save": {
+        "title": "Invalid schedule",
+        "description": "The schedule cannot be saved: {error}"
+      }
+    },
+    "error": {
+      "no_locations": "Enter at least one location.",
+      "slot_order": "The slot must start before it ends.",
+      "period_order": "The period must start before it ends.",
+      "invalid_date": "Invalid date format, use YYYY-MM-DD.",
+      "invalid_config": "The schedule configuration is invalid."
+    }
+  },
+  "selector": {
+    "weekday": {
+      "options": {
+        "0": "Monday",
+        "1": "Tuesday",
+        "2": "Wednesday",
+        "3": "Thursday",
+        "4": "Friday",
+        "5": "Saturday",
+        "6": "Sunday"
+      }
+    },
+    "week_parity": {
+      "options": {
+        "every": "Every week",
+        "odd": "Odd ISO weeks",
+        "even": "Even ISO weeks"
+      }
+    },
+    "holiday_source": {
+      "options": {
+        "manual": "Manual dates",
+        "fr_api": "Official French calendar (by zone)"
+      }
+    },
+    "holiday_zone": {
+      "options": {
+        "A": "Zone A",
+        "B": "Zone B",
+        "C": "Zone C",
+        "corse": "Corsica"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "location": {
+        "name": "Location"
+      },
+      "assigned_location": {
+        "name": "Assigned location"
+      },
+      "next_change": {
+        "name": "Next change"
+      }
+    },
+    "binary_sensor": {
+      "at_home": {
+        "name": "At home"
+      },
+      "at_school": {
+        "name": "At school"
+      }
+    },
+    "calendar": {
+      "schedule": {
+        "name": "Schedule"
+      }
+    }
+  },
+  "services": {
+    "set_override": {
+      "name": "Set manual override",
+      "description": "Manually override the child's location, winning over any planned schedule.",
+      "fields": {
+        "child_id": {
+          "name": "Child ID",
+          "description": "Identifier of the child (slug of the child name)."
+        },
+        "location": {
+          "name": "Location",
+          "description": "The location to force."
+        },
+        "start": {
+          "name": "Start",
+          "description": "When the override starts. Defaults to now."
+        },
+        "end": {
+          "name": "End",
+          "description": "When the override ends. Leave empty for an open-ended override."
+        },
+        "reason": {
+          "name": "Reason",
+          "description": "Optional reason shown in entity attributes."
+        }
+      }
+    },
+    "clear_override": {
+      "name": "Clear manual override",
+      "description": "Remove the manual override and return to the planned schedule.",
+      "fields": {
+        "child_id": {
+          "name": "Child ID",
+          "description": "Identifier of the child (slug of the child name)."
+        }
+      }
+    },
+    "add_exception": {
+      "name": "Add schedule exception",
+      "description": "Add a one-off exception that overrides the planned schedule for a date range. Persisted across restarts.",
+      "fields": {
+        "child_id": {
+          "name": "Child ID",
+          "description": "Identifier of the child (slug of the child name)."
+        },
+        "location": {
+          "name": "Location",
+          "description": "The location to apply during the exception."
+        },
+        "start": {
+          "name": "Start",
+          "description": "When the exception starts."
+        },
+        "end": {
+          "name": "End",
+          "description": "When the exception ends."
+        },
+        "reason": {
+          "name": "Reason",
+          "description": "Optional reason shown in entity attributes."
+        }
+      }
+    },
+    "remove_exception": {
+      "name": "Remove schedule exception",
+      "description": "Remove a persisted one-off exception by its ID.",
+      "fields": {
+        "child_id": {
+          "name": "Child ID",
+          "description": "Identifier of the child (slug of the child name)."
+        },
+        "exception_id": {
+          "name": "Exception ID",
+          "description": "The exception identifier returned when it was added."
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "unknown_child": {
+      "message": "No child with ID {child_id} is configured."
+    }
+  }
+}

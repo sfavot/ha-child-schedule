@@ -1,0 +1,71 @@
+set_override:
+  fields:
+    child_id:
+      required: true
+      example: alex
+      selector:
+        text:
+    location:
+      required: true
+      example: grandparents
+      selector:
+        text:
+    start:
+      required: false
+      selector:
+        datetime:
+    end:
+      required: false
+      selector:
+        datetime:
+    reason:
+      required: false
+      example: Surprise visit
+      selector:
+        text:
+
+clear_override:
+  fields:
+    child_id:
+      required: true
+      example: alex
+      selector:
+        text:
+
+add_exception:
+  fields:
+    child_id:
+      required: true
+      example: alex
+      selector:
+        text:
+    location:
+      required: true
+      example: grandparents
+      selector:
+        text:
+    start:
+      required: true
+      selector:
+        datetime:
+    end:
+      required: true
+      selector:
+        datetime:
+    reason:
+      required: false
+      example: Alex at camp
+      selector:
+        text:
+
+remove_exception:
+  fields:
+    child_id:
+      required: true
+      example: alex
+      selector:
+        text:
+    exception_id:
+      required: true
+      selector:
+        text:

@@ -1,0 +1,24 @@
+[project]
+name = "ha-child-schedule"
+version = "0.1.0"
+description = "Home Assistant integration to manage your child's schedule, including school, activities, holidays, custody, and custom events."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "holidays>=0.60",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
