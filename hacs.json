@@ -1,7 +1,7 @@
 {
   "name": "Child Schedule",
   "render_readme": true,
-  "domains": ["sensor", "binary_sensor", "calendar"],
+  "domains": ["sensor", "binary_sensor", "calendar", "device_tracker"],
   "homeassistant": "2024.8.0",
   "country": "FR"
 }

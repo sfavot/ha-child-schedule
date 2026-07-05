@@ -246,6 +246,11 @@
       "schedule": {
         "name": "Schedule"
       }
+    },
+    "device_tracker": {
+      "tracker": {
+        "name": "Tracker"
+      }
     }
   },
   "services": {

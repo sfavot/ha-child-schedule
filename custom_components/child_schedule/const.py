@@ -16,7 +16,7 @@ DEFAULT_LOCATION = "home"
 LOCATION_HOME = "home"
 LOCATION_SCHOOL = "school"
 
-PLATFORMS = ["sensor", "binary_sensor", "calendar"]
+PLATFORMS = ["sensor", "binary_sensor", "calendar", "device_tracker"]
 
 UPDATE_INTERVAL = timedelta(minutes=1)
 

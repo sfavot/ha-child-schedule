@@ -246,6 +246,11 @@
       "schedule": {
         "name": "Planning"
       }
+    },
+    "device_tracker": {
+      "tracker": {
+        "name": "Suivi"
+      }
     }
   },
   "services": {

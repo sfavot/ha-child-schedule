@@ -38,6 +38,7 @@ For each child (one config entry per child):
 | `sensor.<child>_next_change` | Next schedule change (timestamp) |
 | `binary_sensor.<child>_at_home` | On when effective location is `home` |
 | `binary_sensor.<child>_at_school` | On when effective location is `school` |
+| `device_tracker.<child>_tracker` | Schedule location as a device tracker (for Person entities) |
 | `calendar.<child>_schedule` | Custody schedule as all-day calendar events |
 
 All entities expose attributes: `child_name`, `effective_location`, `assigned_location`, `source`, `reason`, `priority`, `period_start`, `period_end`, `next_change`, `iso_week`, `metadata`, `school_holiday_source` (`manual`, `api`, or `api_fallback`).
