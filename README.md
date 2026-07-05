@@ -36,7 +36,7 @@ For each child (one config entry per child):
 | `sensor.<child>_next_change` | Next schedule change (timestamp) |
 | `binary_sensor.<child>_at_home` | On when effective location is `home` |
 | `binary_sensor.<child>_at_school` | On when effective location is `school` |
-| `calendar.<child>_schedule` | Schedule timeline (V0 skeleton) |
+| `calendar.<child>_schedule` | Custody schedule as all-day calendar events |
 
 All entities expose attributes: `child_name`, `effective_location`, `assigned_location`, `source`, `reason`, `priority`, `period_start`, `period_end`, `next_change`, `iso_week`, `metadata`, `school_holiday_source` (`manual`, `api`, or `api_fallback`).
 
@@ -48,6 +48,16 @@ All entities expose attributes: `child_name`, `effective_location`, `assigned_lo
 - `child_schedule.remove_exception`: remove a persisted exception by ID.
 
 ## Installation
+
+### HACS (recommended)
+
+1. Open **HACS** → **⋮** → **Custom repositories**.
+2. Add `https://github.com/sfavot/ha-child-schedule`, category **Integration**.
+3. Search for **Child Schedule** and install.
+4. Restart Home Assistant.
+5. Add the integration from **Settings → Devices & Services → Add Integration**.
+
+### Manual
 
 1. Copy `custom_components/child_schedule` into the `custom_components` folder of your Home Assistant configuration.
 2. Restart Home Assistant.
