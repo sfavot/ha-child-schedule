@@ -46,3 +46,17 @@ def normalize_datetime(dt: datetime, tz: tzinfo) -> datetime:
 def combine_local(day: date, at: time, tz: tzinfo) -> datetime:
     """Combine a date and a time into an aware local datetime."""
     return datetime.combine(day, at, tzinfo=tz)
+
+
+def normalize_ha_datetime_string(value: str) -> str:
+    """Normalize malformed HA DateTimeSelector output.
+
+    The UI sometimes submits ``YYYY-MM-DDTHH:MM:SS HH:MM:SS`` (date at midnight
+    in ISO form, plus the chosen time). ``cv.datetime`` expects a single value.
+    """
+    if " " not in value:
+        return value
+    date_part, time_part = value.rsplit(" ", 1)
+    if "T" not in date_part:
+        return value
+    return f"{date_part.split('T', 1)[0]} {time_part}"

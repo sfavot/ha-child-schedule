@@ -10,7 +10,6 @@ from homeassistant.config_entries import ConfigFlowResult, OptionsFlow
 from homeassistant.helpers.selector import (
     BooleanSelector,
     DateSelector,
-    DateTimeSelector,
     SelectSelector,
     SelectSelectorConfig,
     SelectSelectorMode,
@@ -44,6 +43,7 @@ from .labels import (
 )
 from .selectors import (
     PARITY_EVERY,
+    FlexibleDateTimeSelector,
     index_removal_selector,
     location_selector,
     remove_indices,
@@ -524,8 +524,8 @@ class ChildScheduleOptionsFlow(OptionsFlow):
             data_schema=vol.Schema(
                 {
                     vol.Required("location"): location_selector(self._locations()),
-                    vol.Required("start"): DateTimeSelector(),
-                    vol.Required("end"): DateTimeSelector(),
+                    vol.Required("start"): FlexibleDateTimeSelector(),
+                    vol.Required("end"): FlexibleDateTimeSelector(),
                     vol.Optional("reason"): TextSelector(),
                 }
             ),
@@ -597,8 +597,8 @@ class ChildScheduleOptionsFlow(OptionsFlow):
             data_schema=vol.Schema(
                 {
                     vol.Required("location"): location_selector(self._locations()),
-                    vol.Required("start"): DateTimeSelector(),
-                    vol.Required("end"): DateTimeSelector(),
+                    vol.Required("start"): FlexibleDateTimeSelector(),
+                    vol.Required("end"): FlexibleDateTimeSelector(),
                     vol.Optional("reason"): TextSelector(),
                 }
             ),

@@ -22,14 +22,15 @@ from .const import (
     SERVICE_SET_OVERRIDE,
 )
 from .coordinator import ChildScheduleCoordinator
+from .options_flow.selectors import ha_datetime
 from .rules import ManualOverride, ScheduleException
 
 SET_OVERRIDE_SCHEMA = vol.Schema(
     {
         vol.Required(ATTR_CHILD_ID): cv.string,
         vol.Required(ATTR_LOCATION): cv.string,
-        vol.Optional(ATTR_START): cv.datetime,
-        vol.Optional(ATTR_END): cv.datetime,
+        vol.Optional(ATTR_START): ha_datetime,
+        vol.Optional(ATTR_END): ha_datetime,
         vol.Optional(ATTR_REASON): cv.string,
     }
 )
@@ -44,8 +45,8 @@ ADD_EXCEPTION_SCHEMA = vol.Schema(
     {
         vol.Required(ATTR_CHILD_ID): cv.string,
         vol.Required(ATTR_LOCATION): cv.string,
-        vol.Required(ATTR_START): cv.datetime,
-        vol.Required(ATTR_END): cv.datetime,
+        vol.Required(ATTR_START): ha_datetime,
+        vol.Required(ATTR_END): ha_datetime,
         vol.Optional(ATTR_REASON): cv.string,
     }
 )
