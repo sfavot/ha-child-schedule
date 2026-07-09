@@ -30,7 +30,7 @@
           "vacations": "School holidays and alternation",
           "date_ranges": "One-off periods (camps, trips, custom)",
           "exceptions": "One-off exceptions",
-          "save": "Save and apply"
+          "done": "Close"
         }
       },
       "general": {
@@ -129,7 +129,7 @@
       },
       "date_ranges": {
         "title": "One-off periods",
-        "description": "Absolute date ranges that override the regular schedule (camps, trips, specific arrangements). Earlier entries win when ranges overlap.\n\nCurrent periods:\n{ranges}",
+        "description": "Planned date ranges in the schedule (camps, trips, custody arrangements). Changes are applied immediately. Earlier entries win when ranges overlap.\n\nCurrent periods:\n{ranges}",
         "menu_options": {
           "date_range_add": "Add a period",
           "date_range_remove": "Remove periods",
@@ -153,7 +153,7 @@
       },
       "exceptions": {
         "title": "One-off exceptions",
-        "description": "Exceptions are saved immediately and override the planned schedule for a date range (e.g. a trip or a calendar note).\n\nCurrent exceptions:\n{exceptions}",
+        "description": "Temporary overrides on top of the planned schedule (higher priority than one-off periods). Applied immediately.\n\nCurrent exceptions:\n{exceptions}",
         "menu_options": {
           "exception_add": "Add an exception",
           "exception_remove": "Remove exceptions",
@@ -175,9 +175,8 @@
           "exceptions": "Exceptions to remove"
         }
       },
-      "save": {
-        "title": "Invalid schedule",
-        "description": "The schedule cannot be saved: {error}"
+      "done": {
+        "title": "Close editor"
       }
     },
     "error": {
@@ -185,7 +184,8 @@
       "slot_order": "The slot must start before it ends.",
       "period_order": "The period must start before it ends.",
       "invalid_date": "Invalid date format, use YYYY-MM-DD.",
-      "invalid_config": "The schedule configuration is invalid."
+      "invalid_config": "The schedule configuration is invalid.",
+      "apply_failed": "The schedule could not be applied. Check your configuration."
     }
   },
   "selector": {

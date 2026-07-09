@@ -30,7 +30,7 @@
           "vacations": "Vacances scolaires et alternance",
           "date_ranges": "Périodes ponctuelles (colo, séjours, autres)",
           "exceptions": "Exceptions ponctuelles",
-          "save": "Enregistrer et appliquer"
+          "done": "Fermer"
         }
       },
       "general": {
@@ -129,7 +129,7 @@
       },
       "date_ranges": {
         "title": "Périodes ponctuelles",
-        "description": "Plages de dates absolues qui remplacent le planning habituel (colo, séjours, arrangements spécifiques). En cas de chevauchement, les premières entrées gagnent.\n\nPériodes actuelles :\n{ranges}",
+        "description": "Périodes prévues dans le planning (colos, séjours, gardes). Les modifications sont appliquées immédiatement. En cas de chevauchement, les premières entrées gagnent.\n\nPériodes actuelles :\n{ranges}",
         "menu_options": {
           "date_range_add": "Ajouter une période",
           "date_range_remove": "Supprimer des périodes",
@@ -153,7 +153,7 @@
       },
       "exceptions": {
         "title": "Exceptions ponctuelles",
-        "description": "Les exceptions sont enregistrées immédiatement et remplacent le planning prévu sur une plage de dates (ex. séjour ou note de calendrier).\n\nExceptions actuelles :\n{exceptions}",
+        "description": "Dérogations temporaires au planning (priorité plus haute que les périodes ponctuelles). Appliquées immédiatement.\n\nExceptions actuelles :\n{exceptions}",
         "menu_options": {
           "exception_add": "Ajouter une exception",
           "exception_remove": "Supprimer des exceptions",
@@ -175,9 +175,8 @@
           "exceptions": "Exceptions à supprimer"
         }
       },
-      "save": {
-        "title": "Planning invalide",
-        "description": "Le planning ne peut pas être enregistré : {error}"
+      "done": {
+        "title": "Fermer l'éditeur"
       }
     },
     "error": {
@@ -185,7 +184,8 @@
       "slot_order": "Le créneau doit commencer avant de finir.",
       "period_order": "La période doit commencer avant de finir.",
       "invalid_date": "Format de date invalide, utilisez AAAA-MM-JJ.",
-      "invalid_config": "La configuration du planning est invalide."
+      "invalid_config": "La configuration du planning est invalide.",
+      "apply_failed": "Le planning n'a pas pu être appliqué. Vérifiez la configuration."
     }
   },
   "selector": {
