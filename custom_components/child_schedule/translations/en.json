@@ -25,6 +25,7 @@
         "menu_options": {
           "general": "General",
           "locations": "Locations",
+          "zones": "Location zones",
           "weekly": "Weekly schedule",
           "school": "School / daycare",
           "vacations": "School holidays and alternation",
@@ -47,6 +48,10 @@
         "data": {
           "locations": "Locations (comma separated)"
         }
+      },
+      "zones": {
+        "title": "Location zones",
+        "description": "The Home Assistant zone of each location. When the child is at a location that has a zone, the tracker reports the zone's position, so the child shows on the map. The \"home\" location uses the Home zone by default."
       },
       "weekly": {
         "title": "Weekly schedule",

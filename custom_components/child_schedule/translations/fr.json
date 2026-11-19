@@ -25,6 +25,7 @@
         "menu_options": {
           "general": "Général",
           "locations": "Lieux",
+          "zones": "Zones des lieux",
           "weekly": "Planning hebdomadaire",
           "school": "École / crèche",
           "vacations": "Vacances scolaires et alternance",
@@ -47,6 +48,10 @@
         "data": {
           "locations": "Lieux (séparés par des virgules)"
         }
+      },
+      "zones": {
+        "title": "Zones des lieux",
+        "description": "La zone Home Assistant de chaque lieu. Quand l'enfant est dans un lieu qui a une zone, le suivi donne la position de cette zone : l'enfant apparaît sur la carte. Le lieu « home » utilise la zone Maison par défaut."
       },
       "weekly": {
         "title": "Planning hebdomadaire",

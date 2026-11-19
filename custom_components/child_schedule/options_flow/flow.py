@@ -11,6 +11,8 @@ from homeassistant.config_entries import ConfigFlowResult, OptionsFlow
 from homeassistant.helpers.selector import (
     BooleanSelector,
     DateSelector,
+    EntitySelector,
+    EntitySelectorConfig,
     SelectSelector,
     SelectSelectorConfig,
     SelectSelectorMode,
@@ -24,6 +26,7 @@ from ..rules import ScheduleException
 from ..runtime_store import ChildScheduleRuntimeStore
 from ..schedule_builder import (
     CONF_DATE_RANGES,
+    CONF_LOCATION_ZONES,
     CONF_LOCATIONS,
     CONF_SCHOOL,
     CONF_SCHOOL_HOLIDAYS,
@@ -135,6 +138,7 @@ class ChildScheduleOptionsFlow(OptionsFlow):
             menu_options=[
                 "general",
                 "locations",
+                "zones",
                 "weekly",
                 "school",
                 "vacations",
@@ -232,6 +236,49 @@ class ChildScheduleOptionsFlow(OptionsFlow):
                 }
             ),
             errors=errors,
+        )
+
+    # --- Location zones --------------------------------------------
+
+    async def async_step_zones(
+        self, user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
+        """Pick the Home Assistant zone of each location (for the tracker position)."""
+        errors: dict[str, str] = {}
+        zones: dict[str, str] = dict(self._config.get(CONF_LOCATION_ZONES) or {})
+        if user_input is not None:
+            self._config[CONF_LOCATION_ZONES] = {
+                location: zone
+                for location in self._locations()
+                if (zone := user_input.get(location))
+            }
+            if save_error := await self._async_apply_config():
+                errors["base"] = "apply_failed"
+                return self._show_zones_form(zones, errors, save_error)
+            return await self.async_step_init()
+
+        return self._show_zones_form(zones, errors)
+
+    def _show_zones_form(
+        self,
+        zones: dict[str, str],
+        errors: dict[str, str],
+        save_error: str | None = None,
+    ) -> ConfigFlowResult:
+        selector = EntitySelector(EntitySelectorConfig(domain="zone"))
+        return self.async_show_form(
+            step_id="zones",
+            data_schema=vol.Schema(
+                {
+                    vol.Optional(
+                        location,
+                        description={"suggested_value": zones.get(location)},
+                    ): selector
+                    for location in self._locations()
+                }
+            ),
+            errors=errors,
+            description_placeholders={"error": save_error} if save_error else None,
         )
 
     # --- Weekly slots ----------------------------------------------

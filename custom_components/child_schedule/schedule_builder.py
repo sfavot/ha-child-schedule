@@ -89,6 +89,7 @@ CONF_DATE_RANGES = "date_ranges"
 CONF_PUBLIC_HOLIDAYS = "public_holidays"
 CONF_LOCATION_LABELS = "location_labels"
 CONF_LOCATION_COLORS = "location_colors"
+CONF_LOCATION_ZONES = "location_zones"
 
 HOLIDAY_SOURCE_MANUAL = "manual"
 HOLIDAY_SOURCE_FR_API = "fr_api"
@@ -140,6 +141,7 @@ def default_schedule_config() -> dict[str, Any]:
         CONF_PUBLIC_HOLIDAYS: {"country": "FR"},
         CONF_LOCATION_LABELS: {},
         CONF_LOCATION_COLORS: {},
+        CONF_LOCATION_ZONES: {},
     }
 
 

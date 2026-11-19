@@ -51,6 +51,7 @@ class ChildScheduleCoordinator(DataUpdateCoordinator[ChildScheduleData]):
         engine: ScheduleEngine,
         school_holiday_source: str,
         location_labels: dict[str, str] | None = None,
+        location_zones: dict[str, str] | None = None,
     ) -> None:
         super().__init__(
             hass,
@@ -62,6 +63,7 @@ class ChildScheduleCoordinator(DataUpdateCoordinator[ChildScheduleData]):
         self.engine = engine
         self.school_holiday_source = school_holiday_source
         self.location_labels = location_labels or {}
+        self.location_zones = location_zones or {}
         self._runtime_store = ChildScheduleRuntimeStore(hass, config_entry.entry_id)
         self._cached_next_change: datetime | None = None
 

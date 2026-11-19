@@ -18,6 +18,7 @@ from .engine import ScheduleEngine
 from .models import Child
 from .schedule_builder import (
     CONF_LOCATION_LABELS,
+    CONF_LOCATION_ZONES,
     CONF_SCHOOL_HOLIDAYS,
     HOLIDAY_SOURCE_FR_API,
     HOLIDAY_SOURCE_STATUS_API,
@@ -139,12 +140,14 @@ async def async_setup_entry(
     engine, school_holiday_source = await _async_build_engine(hass, entry)
     schedule_config = get_schedule_config(entry)
     location_labels = schedule_config.get(CONF_LOCATION_LABELS) or {}
+    location_zones = schedule_config.get(CONF_LOCATION_ZONES) or {}
     coordinator = ChildScheduleCoordinator(
         hass,
         entry,
         engine,
         school_holiday_source=school_holiday_source,
         location_labels=location_labels,
+        location_zones=location_zones,
     )
     await coordinator.async_load_runtime()
     await coordinator.async_config_entry_first_refresh()

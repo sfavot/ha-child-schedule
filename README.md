@@ -38,10 +38,14 @@ For each child (one config entry per child):
 | `sensor.<child>_next_change` | Next schedule change (timestamp) |
 | `binary_sensor.<child>_at_home` | On when effective location is `home` |
 | `binary_sensor.<child>_at_school` | On when effective location is `school` |
-| `device_tracker.<child>_tracker` | Schedule location as a device tracker (for Person entities) |
+| `device_tracker.<child>_tracker` | Schedule location as a device tracker (for Person entities); positioned on the map when the location has a zone |
 | `calendar.<child>_schedule` | Custody schedule as all-day calendar events |
 
 All entities expose attributes: `child_name`, `effective_location`, `assigned_location`, `source`, `reason`, `priority`, `period_start`, `period_end`, `next_change`, `iso_week`, `metadata`, `school_holiday_source` (`manual`, `api`, or `api_fallback`).
+
+### Showing the child on the map
+
+In the options, **Location zones** links each location to a Home Assistant zone (create the zones first in **Settings → Areas, labels & zones → Zones**). When the effective location has a zone, the tracker reports the zone's coordinates: the child shows on the map and the tracker state is the zone (`home` for the Home zone). The `home` location uses the Home zone by default. A location without a zone keeps its code as the tracker state, without a position.
 
 ## Services
 
